@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetAgenda - Gestão Inteligente para Veterinários</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header role="banner">
+        <nav class="container" aria-label="Menu Principal">
+            <div class="logo">VetAgenda</div>
+            <div class="accessibility-controls">
+                <button onclick="changeFontSize('increase')" aria-label="Aumentar fonte">A+</button>
+                <button onclick="changeFontSize('decrease')" aria-label="Diminuir fonte">A-</button>
+                <button onclick="toggleContrast()" aria-label="Alternar Alto Contraste">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero scroll-reveal">
+            <div class="container">
+                <h1>Sua clínica veterinária em um só lugar.</h1>
+                <p>Organize atendimentos, histórico médico e lembretes automáticos com foco no que importa: o cuidado animal.</p>
+                <a href="#contato" class="btn-primary">Começar Agora</a>
+            </div>
+        </section>
+
+        <section id="features" class="container scroll-reveal" aria-labelledby="features-title">
+            <h2 id="features-title">Funcionalidades Pensadas para Você</h2>
+            <div id="features-grid" class="grid-layout">
+                </div>
+        </section>
+
+        <section id="faq" class="container scroll-reveal">
+            <h2>Dúvidas Frequentes</h2>
+            <div id="accordion-container">
+                </div>
+        </section>
+
+        <section id="depoimentos" class="container scroll-reveal">
+            <h2>O que dizem os veterinários</h2>
+            <div class="carousel" role="region" aria-label="Carrossel de Depoimentos">
+                <div id="carousel-track" class="carousel-track">
+                    </div>
+                <div class="carousel-nav">
+                    <button id="prevBtn" aria-label="Anterior">❮</button>
+                    <button id="nextBtn" aria-label="Próximo">❯</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2023 VetAgenda. Desenvolvido com foco em acessibilidade.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
