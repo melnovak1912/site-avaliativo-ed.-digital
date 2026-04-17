@@ -1,0 +1,120 @@
+/* --- DESIGN SYSTEM & VARIÁVEIS --- */
+:root {
+    --primary-color: #2D5A27;
+    --secondary-color: #64B6AC;
+    --bg-color: #F8FAF8;
+    --text-color: #333;
+    --white: #FFFFFF;
+    --radius: 12px;
+    --spacing: 2rem;
+    --transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --font-base: 16px;
+}
+
+/* --- MODO ALTO CONTRASTE --- */
+body.high-contrast {
+    --primary-color: #FFFF00;
+    --bg-color: #000000;
+    --text-color: #FFFFFF;
+    --white: #000000;
+    border: 1px solid #FFFF00;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-size: var(--font-base);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+}
+
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+/* --- HEADER & NAV --- */
+header {
+    background: var(--primary-color);
+    padding: 1rem 0;
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav { display: flex; justify-content: space-between; align-items: center; }
+
+.accessibility-controls button {
+    background: var(--white);
+    border: none;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* --- GRID LAYOUT (Editável) --- */
+.grid-layout {
+    display: grid;
+    gap: var(--spacing);
+    /* Mobile-first: 1 coluna */
+    grid-template-columns: 1fr;
+    padding: var(--spacing) 0;
+}
+
+@media (min-width: 768px) {
+    .grid-layout {
+        /* Desktop: 3 colunas */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* --- COMPONENTES --- */
+.card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+/* Accordion */
+.accordion-item { border-bottom: 1px solid #ddd; margin-bottom: 0.5rem; }
+.accordion-header {
+    width: 100%;
+    padding: 1rem;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+/* Carousel */
+.carousel { overflow: hidden; position: relative; padding: 2rem 0; }
+.carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+.slide { min-width: 100%; padding: 2rem; text-align: center; }
+
+/* --- ANIMAÇÕES --- */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
