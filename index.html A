@@ -1,0 +1,80 @@
+// --- DADOS DINÂMICOS ---
+const features = [
+    { title: "Agenda Inteligente", desc: "Sincronização em tempo real e avisos via WhatsApp." },
+    { title: "Prontuário Digital", desc: "Histórico completo com fotos e exames anexados." },
+    { title: "Controle Financeiro", desc: "Gestão de pagamentos e fluxo de caixa da clínica." }
+];
+
+const faqs = [
+    { q: "Posso acessar pelo celular?", a: "Sim! O VetAgenda é totalmente responsivo e funciona em qualquer dispositivo." },
+    { q: "Os dados são seguros?", a: "Utilizamos criptografia de ponta a ponta para proteger as informações dos seus pacientes." }
+];
+
+const testimonials = [
+    { name: "Dr. Marcos", text: "Mudou minha rotina no consultório!" },
+    { name: "Dra. Ana", text: "A facilidade de organizar as vacinas é incrível." }
+];
+
+// --- RENDERIZAÇÃO DINÂMICA ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Render Features
+    const grid = document.getElementById('features-grid');
+    features.forEach(f => {
+        grid.innerHTML += `
+            <article class="card">
+                <h3>${f.title}</h3>
+                <p>${f.desc}</p>
+            </article>
+        `;
+    });
+
+    // Render Accordion
+    const faqContainer = document.getElementById('accordion-container');
+    faqs.forEach((item, index) => {
+        faqContainer.innerHTML += `
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(${index})">
+                    ${item.q} <span>+</span>
+                </button>
+                <div class="accordion-content" id="faq-${index}">
+                    <p style="padding: 1rem;">${item.a}</p>
+                </div>
+            </div>
+        `;
+    });
+
+    // Render Carousel
+    const track = document.getElementById('carousel-track');
+    testimonials.forEach(t => {
+        track.innerHTML += `
+            <div class="slide">
+                <p>"${t.text}"</p>
+                <strong>- ${t.name}</strong>
+            </div>
+        `;
+    });
+
+    initScrollReveal();
+});
+
+// --- FUNCIONALIDADES DE ACESSIBILIDADE ---
+let currentFontSize = 16;
+function changeFontSize(action) {
+    currentFontSize = action === 'increase' ? currentFontSize + 2 : currentFontSize - 2;
+    document.documentElement.style.setProperty('--font-base', currentFontSize + 'px');
+}
+
+function toggleContrast() {
+    document.body.classList.toggle('high-contrast');
+}
+
+// --- COMPONENTES (Accordion & Carousel) ---
+function toggleAccordion(index) {
+    const content = document.getElementById(`faq-${index}`);
+    const isVisible = content.style.maxHeight !== "0px" && content.style.maxHeight !== "";
+    content.style.maxHeight = isVisible ? "0px" : "200px";
+}
+
+let currentSlide = 0;
+document.getElementById('nextBtn')?.addEventListener('click', () => {
+    const slides =
